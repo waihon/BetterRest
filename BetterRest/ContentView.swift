@@ -40,6 +40,12 @@ struct ContentView: View {
           }
         }
       }
+      .navigationBarTitle("BetterRest")
+      .navigationBarItems(trailing:
+          Button(action: calculateBedtime) {
+            Text("Calculate")
+          }
+      )
     }
   }
   
