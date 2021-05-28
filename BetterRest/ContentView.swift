@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreML
 
 struct ContentView: View {
   @State private var wakeUp = Date()
@@ -50,6 +51,21 @@ struct ContentView: View {
   }
   
   func calculateBedtime() {
+    let components = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
+    let hour = (components.hour ?? 0) * 60 * 60
+    let minute = (components.minute ?? 0) * 60
+    
+    do {
+      // https://www.hackingwithswift.com/forums/swiftui/betterrest-init-deprecated/2593
+      let model: SleepCalculator = try SleepCalculator(configuration: MLModelConfiguration())
+      let prediction = try model.prediction(wake: Double(hour + minute),
+                                            estimatedSleep: sleepAmount,
+                                            coffee: Double(coffeeAmount))
+      let sleepTime = wakeUp - prediction.actualSleep
+      // more code hre
+    } catch {
+      // something went wrong!
+    }
   }
 }
 
