@@ -36,16 +36,16 @@ struct ContentView: View {
                
          Section(header: Text("Daily coffee intake")
           .font(.headline)) {
-            Picker("Please select daily coffee intake",
-                   selection: $coffeeAmount) {
-              ForEach(1 ..< 21) { number in
-                if number == 1 {
-                  Text("1 cup")
-                } else {
-                  Text("\(number) cups")
-                }
+          Picker("Please select daily coffee intake",
+                 selection: $coffeeAmount) {
+            ForEach(1 ..< 21) { number in
+              if number == 1 {
+                Text("1 cup")
+              } else {
+                Text("\(number) cups")
               }
             }
+          }
         }
         
         Section(header: Text("Your ideal bedtime is")
