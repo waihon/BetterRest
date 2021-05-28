@@ -42,6 +42,9 @@ struct ContentView: View {
       }
     }
   }
+  
+  func calculateBedtime() {
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
