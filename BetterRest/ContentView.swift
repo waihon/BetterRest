@@ -25,6 +25,7 @@ struct ContentView: View {
                    selection: $wakeUp,
                    displayedComponents: .hourAndMinute)
           .labelsHidden()
+          .datePickerStyle(WheelDatePickerStyle())
         
         Text("Desired amount of sleep")
           .font(.headline)
